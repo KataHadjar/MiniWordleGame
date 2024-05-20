@@ -1,23 +1,24 @@
+import os
 import telebot
 
 from src.constants import *
 from src.game_realisation import *
 
-bot = telebot.TeleBot(token)
+bot = telebot.TeleBot(os.getenv("BOT_TOKEN"))
 
 word_dict = ["", 0]
 
 
 @bot.message_handler(commands=['start'])
 def main(message):
-    bot.send_message(message.chat.id, start_text)
+    bot.send_message(message.chat.id, START_TEXT)
     word_dict[0] = ""
     word_dict[1] = 0
 
 
 @bot.message_handler(commands=['help'])
 def main(message):
-    bot.send_message(message.chat.id, help_text)
+    bot.send_message(message.chat.id, HELP_TEXT)
     word_dict[0] = ""
     word_dict[1] = 0
 
